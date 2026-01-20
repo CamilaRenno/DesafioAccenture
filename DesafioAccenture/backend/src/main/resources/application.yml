@@ -1,0 +1,9 @@
+spring:
+datasource:
+url: jdbc:postgresql://db:5432/desafio
+username: desafio
+password: desafio
+jpa:
+hibernate:
+ddl-auto: update
+show-sql: true
