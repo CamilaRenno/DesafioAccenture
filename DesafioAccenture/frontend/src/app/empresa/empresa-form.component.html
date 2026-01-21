@@ -1,0 +1,23 @@
+<div class="container card">
+  <h2>{{ id ? 'Editar Empresa' : 'Nova Empresa' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <mat-form-field style="width:100%">
+      <mat-label>CNPJ</mat-label>
+      <input matInput formControlName="cnpj">
+    </mat-form-field>
+
+    <mat-form-field style="width:100%">
+      <mat-label>Nome Fantasia</mat-label>
+      <input matInput formControlName="nomeFantasia">
+    </mat-form-field>
+
+    <mat-form-field style="width:100%">
+      <mat-label>CEP</mat-label>
+      <input matInput formControlName="cep">
+      <mat-error *ngIf="form.get('cep')?.hasError('cepInvalido')">CEP inválido</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Salvar</button>
+    <button mat-button routerLink="/empresas">Cancelar</button>
+  </form>
+</div>

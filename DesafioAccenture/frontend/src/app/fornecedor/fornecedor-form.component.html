@@ -1,0 +1,46 @@
+<div class="container card">
+  <h2>{{ id ? 'Editar Fornecedor' : 'Novo Fornecedor' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <mat-form-field style="width:100%">
+      <mat-label>Documento (CPF/CNPJ)</mat-label>
+      <input matInput formControlName="documento">
+    </mat-form-field>
+
+    <mat-form-field style="width:100%">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="tipo">
+        <mat-option value="CPF">Pessoa Física (CPF)</mat-option>
+        <mat-option value="CNPJ">Pessoa Jurídica (CNPJ)</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style="width:100%">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome">
+    </mat-form-field>
+
+    <mat-form-field style="width:100%">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field style="width:100%">
+      <mat-label>CEP</mat-label>
+      <input matInput formControlName="cep">
+      <mat-error *ngIf="form.get('cep')?.hasError('cepInvalido')">CEP inválido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="width:100%" *ngIf="form.get('tipo')?.value === 'CPF'">
+      <mat-label>RG</mat-label>
+      <input matInput formControlName="rg">
+    </mat-form-field>
+
+    <mat-form-field style="width:100%" *ngIf="form.get('tipo')?.value === 'CPF'">
+      <mat-label>Data de Nascimento</mat-label>
+      <input matInput type="date" formControlName="dataNascimento">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Salvar</button>
+    <button mat-button routerLink="/fornecedores">Cancelar</button>
+  </form>
+</div>
