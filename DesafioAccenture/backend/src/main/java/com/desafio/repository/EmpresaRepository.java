@@ -1,7 +1,10 @@
-
 package com.desafio.repository;
 
+import com.desafio.domain.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.desafio.model.Empresa;
 
-public interface EmpresaRepository extends JpaRepository<Empresa, Long> {}
+import java.util.Optional;
+
+public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
+  Optional<Empresa> findByCnpj(String cnpj);
+}
