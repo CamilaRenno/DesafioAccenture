@@ -1,9 +1,17 @@
 spring:
-datasource:
-url: jdbc:postgresql://db:5432/desafio
-username: desafio
-password: desafio
-jpa:
-hibernate:
-ddl-auto: update
-show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/desafio
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8080
+cep:
+  base-url: https://cep.la
